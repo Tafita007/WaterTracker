@@ -7,6 +7,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.watertracker.screens.HomeScreen
 import com.example.watertracker.screens.add.AddInTakeScreen
 import com.example.watertracker.screens.history.HistoryScreen
+import com.example.watertracker.screens.settings.SettingsScreen
 
 @kotlinx.serialization.Serializable
 object WaterTrackerHome
@@ -16,6 +17,9 @@ object WaterTrackerHistory
 
 @kotlinx.serialization.Serializable
 object WaterTrackerAddInTake
+
+@kotlinx.serialization.Serializable
+object WaterTrackerSettings
 
 @Composable
 fun AppNavHost() {
@@ -35,6 +39,10 @@ fun AppNavHost() {
 
         composable<WaterTrackerAddInTake> {
             AddInTakeScreen(navController = navController)
+        }
+
+        composable<WaterTrackerSettings> {
+            SettingsScreen(navController = navController)
         }
 
     }
