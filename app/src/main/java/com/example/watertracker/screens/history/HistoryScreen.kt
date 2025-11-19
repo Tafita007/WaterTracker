@@ -1,4 +1,4 @@
-package com.example.watertracker.screens
+package com.example.watertracker.screens.history
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -28,7 +28,7 @@ import com.example.watertracker.layout.DefaultScaffold
 import com.example.watertracker.ui.theme.WaterTrackerTheme
 
 @Composable
-fun HomeCard(modifier: Modifier = Modifier) {
+fun HistoryCard(modifier: Modifier = Modifier) {
     Card(
         modifier = modifier
             .fillMaxWidth()
@@ -72,18 +72,18 @@ fun HomeCard(modifier: Modifier = Modifier) {
 
 @Preview(showBackground = true)
 @Composable
-fun HomeCardPreview() {
+fun HistoryCardPreview() {
     WaterTrackerTheme {
-        HomeCard(
+        HistoryCard(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(300.dp),
+                .height(300.dp)
         )
     }
 }
 
 @Composable
-fun HomeScreen(navController: NavController) {
+fun HistoryScreen(navController: NavController) {
     DefaultScaffold(
         content = { paddingValues ->
             Box(
@@ -91,7 +91,7 @@ fun HomeScreen(navController: NavController) {
                     .fillMaxSize()
                     .padding(paddingValues)
             ) {
-                HomeCard(
+                HistoryCard(
                     modifier = Modifier
                         .align(Alignment.Center)
                         .fillMaxWidth()

@@ -1,7 +1,10 @@
 package com.example.watertracker.layout
 
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -15,8 +18,6 @@ import androidx.compose.ui.graphics.Color
 fun DefaultScaffold(
     content: @Composable (PaddingValues) -> Unit,
     onNavigateBack: (() -> Unit)? = null,
-    onNavigateHistory: (() -> Unit)? = null,
-    onDeleteAllMoods: (() -> Unit)? = null
 ) {
     Scaffold(
         topBar = {
@@ -25,19 +26,7 @@ fun DefaultScaffold(
                 navigationIcon = {
                     if (onNavigateBack != null) {
                         IconButton(onClick = onNavigateBack) {
-
-                        }
-                    }
-                },
-                actions = {
-                    if (onNavigateHistory != null) {
-                        IconButton(onClick = onNavigateHistory) {
-
-                        }
-                    }
-                    if (onDeleteAllMoods != null) {
-                        IconButton(onClick = onDeleteAllMoods) {
-
+                            Icon(Icons.Filled.ArrowBack, contentDescription = "Go back")
                         }
                     }
                 },
