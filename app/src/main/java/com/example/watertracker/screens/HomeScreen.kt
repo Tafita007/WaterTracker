@@ -1,19 +1,10 @@
 package com.example.watertracker.screens
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -32,8 +23,9 @@ fun HomeCard(modifier: Modifier = Modifier) {
     Card(
         modifier = modifier
             .fillMaxWidth()
-            .height(300.dp)
-            .padding(16.dp),
+            .height(550.dp)
+            .padding(16.dp)
+            .offset(y = -230.dp),
         shape = RoundedCornerShape(16.dp),
         elevation = CardDefaults.cardElevation(9.dp),
         colors = CardDefaults.cardColors(containerColor = Color(0xFFF1F1F1))
@@ -45,26 +37,51 @@ fun HomeCard(modifier: Modifier = Modifier) {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            Text(
-                text = "Welcome to WaterTracker",
-                fontSize = 20.sp,
-                style = MaterialTheme.typography.titleSmall,
-                color = Color(0xFF3E3E3E)
-            )
-            Spacer(modifier = Modifier.height(32.dp))
-            Button(
-                onClick = {},
-                modifier = Modifier.fillMaxWidth(),
-                shape = RoundedCornerShape(50),
-                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF7BB6FF)),
-                contentPadding = PaddingValues(vertical = 16.dp)
+            // Circular Progress Indicator with text inside
+            Box(
+                modifier = Modifier
+                    .size(200.dp)
+                    .align(Alignment.CenterHorizontally)
             ) {
-                Text(
-                    text = "Tap",
-                    fontSize = 16.sp,
-                    color = Color.White,
-                    style = MaterialTheme.typography.labelLarge
+                // Circle Progress Indicator
+                CircularProgressIndicator(
+                    modifier = Modifier
+                        .size(200.dp)
+                        .align(Alignment.Center),
+                    color = Color(0xFF7BB6FF),
+                    strokeWidth = 10.dp,
+                    progress = 0.5f // You can update the progress here
                 )
+
+                // Text in the circle
+                Column(
+                    modifier = Modifier
+                        .align(Alignment.Center)
+                        .fillMaxSize(),
+                    verticalArrangement = Arrangement.Center,
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Text(
+                        text = "0ml",
+                        fontSize = 50.sp,
+                        style = MaterialTheme.typography.titleLarge,
+                        color = Color.Blue
+                    )
+                    Spacer(modifier = Modifier.height(5.dp))
+                    Text(
+                        text = "sur "+"200ml",
+                        fontSize = 18.sp,
+                        style = MaterialTheme.typography.bodyLarge,
+                        color = Color.DarkGray
+                    )
+                    Spacer(modifier = Modifier.height(5.dp))
+                    Text(
+                        text = "0%",
+                        fontSize = 18.sp,
+                        style = MaterialTheme.typography.bodyLarge,
+                        color = Color.LightGray
+                    )
+                }
             }
         }
     }
@@ -101,5 +118,4 @@ fun HomeScreen(navController: NavController) {
             }
         }
     )
-
 }
