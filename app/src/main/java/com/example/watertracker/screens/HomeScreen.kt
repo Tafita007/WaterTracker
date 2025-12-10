@@ -2,6 +2,7 @@ package com.example.watertracker.screens
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
@@ -100,6 +101,88 @@ fun HomeCardPreview() {
 }
 
 @Composable
+fun SaisieCard(modifier: Modifier = Modifier) {
+    Card(
+        modifier = modifier
+            .fillMaxWidth()
+            .height(780.dp)
+            .padding(16.dp)
+            .offset(y = 70.dp),
+        shape = RoundedCornerShape(16.dp),
+        elevation = CardDefaults.cardElevation(9.dp),
+        colors = CardDefaults.cardColors(containerColor = Color(0xFFF1F1F1))
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(24.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.SpaceBetween // pour distribuer l'espace entre les éléments
+        ) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.Start // Aligner à gauche
+            ) {
+                Text(
+                    text = "Ajouter de l'eau",
+                    fontSize = 20.sp,
+                    style = MaterialTheme.typography.titleMedium,
+                    color = Color.Black
+                )
+            }
+
+            // Section des boutons pour les quantités d'eau
+            Column(
+                verticalArrangement = Arrangement.spacedBy(16.dp) // Espacement entre les lignes
+            ) {
+                // Première ligne de boutons (100ml, 200ml, 250ml)
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceEvenly // Espacement égal entre les boutons
+                ) {
+                    Button(onClick = { }) {
+                        Text(text = "+ 100ml")
+                    }
+                    Button(onClick = { }) {
+                        Text(text = "+ 200ml")
+                    }
+                    Button(onClick = { }) {
+                        Text(text = "+ 250ml")
+                    }
+                }
+
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceEvenly
+                ) {
+                    Button(onClick = { }) {
+                        Text(text = "+ 300ml")
+                    }
+                    Button(onClick = { }) {
+                        Text(text = "+ 500ml")
+                    }
+                    Button(onClick = { }) {
+                        Text(text = "+ 1000ml")
+                    }
+                }
+            }
+        }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun SaisieCardPreview() {
+    WaterTrackerTheme {
+        SaisieCard(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(300.dp),
+        )
+    }
+}
+
+@Composable
 fun HomeScreen(navController: NavController) {
     DefaultScaffold(
         content = { paddingValues ->
@@ -109,6 +192,14 @@ fun HomeScreen(navController: NavController) {
                     .padding(paddingValues)
             ) {
                 HomeCard(
+                    modifier = Modifier
+                        .align(Alignment.Center)
+                        .fillMaxWidth()
+                        .height(300.dp)
+                        .padding(16.dp)
+                )
+
+                SaisieCard(
                     modifier = Modifier
                         .align(Alignment.Center)
                         .fillMaxWidth()
